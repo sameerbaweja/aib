@@ -1,0 +1,43 @@
+<div class="add_product_popup">
+	<md-content layout-padding>
+		<form data-ng-submit="submitRequest()" data-ng-controller="submitRequestController" name="requestForm">
+			<ul>
+	        	<li>
+	              	<md-input-container class="md-block">
+						<label for="select_pro">Select Your Product:</label>
+						<md-select id="select_pro" ng-model="request.productId" required>
+						 	<md-option ng-repeat="req_product in products" value="{{req_product.productId}}">
+						 		{{req_product.productNickName}}
+						 	</md-option>
+						</md-select>
+		                <div ng-messages="requestForm.productTypeId.$error">
+							<div ng-message="required">This is required.</div>
+						</div>
+					</md-input-container>
+	             </li>
+	             <li>
+	              	<md-input-container class="md-block">
+						<label>Problem</label>
+						<input required type="text" data-ng-model="request.requestTitle"/>
+		                <div ng-messages="requestForm.productTypeId.$error">
+							<div ng-message="required">This is required.</div>
+						</div>
+					</md-input-container>
+	             </li>
+	             <li>
+	              	<md-input-container class="md-block">
+						<label>Description</label>
+						<textarea required data-ng-model="request.requestDesc"></textarea>
+		                <div ng-messages="requestForm.productTypeId.$error">
+							<div ng-message="required">This is required.</div>
+						</div>
+					</md-input-container>
+	             </li>
+				<li style="float:right;">
+	              	<md-button type="submit" class="md-raised md-primary">Submit</md-button>
+	              	<md-button type="reset" class="md-raised">Cancel</md-button>
+				</li>
+			</ul>
+		</form>
+	</md-content>
+</div>

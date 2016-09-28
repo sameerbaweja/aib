@@ -1,0 +1,85 @@
+                <div class="requests_block fullwidth_block">
+                  <div class="block_header clearfix">
+                    <h1>Request Log</h1>
+
+                    <div class="filter_options">
+                      <span class="filter">Filter by:</span>
+                      <!--<select>
+                       <option value="category">Category</option>
+                       <option value="category">Category 1</option>
+                       <option value="category">Category 2</option>
+                       <option value="category">Category 3</option>
+                      </select>-->
+
+                      <select data-ng-model="requestStatusFilter">
+                       <option value="" label="All Status" data-ng-selected="selected"></option>
+                       <option data-ng-repeat="rStatus in requestStatusList" value="{{rStatus.requestStatusId}}">{{rStatus.requestStatusValue}}</option>
+                      </select>
+
+                      <select data-ng-model="requestTypeFilter">
+                       <option value="" label="All Types" data-ng-selected="selected"></option>
+                       <option data-ng-repeat="rType in requestTypes" value="{{rType.requestTypeId}}">{{rType.requestTypeValue}}</option>
+                      </select>
+                      <!--  <select data-ng-model="requestTypeFilter" data-ng-options="type.requestTypeId as type.requestTypeValue for type in requestTypes">
+                       <option value="" label="All Types" data-ng-selected="selected"></option>
+                      </select>-->
+
+                      <select data-ng-model="productTypeFilter">
+                       <option value="" label="All Product Types" data-ng-selected="selected"></option>
+                       <option data-ng-repeat="ptype in productTypes" value="{{ptype.productTypeId}}">{{ptype.productTypeValue}}</option>
+                      </select>
+                      <!--  <select data-ng-change="productTypeChange()" data-ng-model="productTypeFilter" data-ng-options="type.productTypeId as type.productTypeValue for type in productTypes">
+                       <option label="Product Type" value="" data-ng-selected="selected">Product Type</option>
+                      </select>-->
+
+                      <select data-ng-model="makesFilter">
+                       <option value="" label="All Brands" data-ng-selected="selected"></option>
+                       <option data-ng-repeat="make in brands" value="{{make.makeId}}">{{make.makeName}}</option>
+                      </select>
+
+                    </div>
+                  </div>
+
+                  <ul class="about_product">
+                    <li class="active" ng-repeat="request in requests | filter:{requestStatus:{requestStatusId:requestStatusFilter}, requestType:{requestTypeId:requestTypeFilter}, product:{make:{makeId:makesFilter}}, product:{productType:{productTypeId:productTypeFilter}}}"> <!-- active class is used for expended block -->
+                      <div class="min-detail clearfix">
+                        <div class="icon_area"><img src="images/icon_pt_{{request.product.productType.productTypeId}}.png" alt="laptop icon" class="product_icon" width="36"/></div>
+                        <div class="title_area">
+                          <div class="d_product">
+                            <h2>{{request.requestTitle}}</h2>
+                            <span class="product_model">{{request.product.productNickName}}</span> <span class="special_ch">&#073;</span> <time datetime="dd-mm-yyyy">{{request.requestCreatedAt | date:'dd-MMM-yyyy'}}</time>
+                          </div>
+                        </div>
+                        <div class="btn">
+                          <a href="#" class="edit"><img src="images/icon_edit.png" alt="edit icon" width="20" /></a>
+                          <!-- <a href="#/withdrawrequest/{{request.requestId}}" class="delete"><img src="images/icon_delete.png" alt="edit icon" width="16" /></a> -->
+                          <a ng-click="withdrawRequest($event, request.requestId)" class="delete"><img src="images/icon_delete.png" alt="edit icon" width="16" /></a>
+                        </div>
+                      </div>
+
+	                    <div class="detail_product clearfix">
+	                      <ul class="req_detail">
+	                        <li>Request ID: <span class="req_id">{{request.requestId}}</span></li>
+	                        <li>Make: <span class="req_pro">{{request.product.make.makeName}}</span></li>
+	                        <li>Model: <span class="req_model">{{request.product.productModel}}</span></li>
+	                        <li>Status: <span class="req_status">{{request.requestStatus.requestStatusValue}}</span>
+	                      </ul>
+	
+	                      {{request.requestDescription}}
+	
+	                      <span class="tab_detail_btn detail_btn">
+	                        <a href="#" class="view_det">View Details</a>
+	                        <a href="#" class="view_product">View Product Details</a>
+	                      </span>
+	
+	                      <div class="req_det">
+	                        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+	                        <span class="detail_btn">
+	                          <a href="#" class="view_det">View Details</a>
+	                          <a href="#" class="view_product">View Product Details</a>
+	                        </span>
+	                      </div>
+	                    </div>
+                  	</li>
+                </ul>
+              </div> <!-- end request block -->

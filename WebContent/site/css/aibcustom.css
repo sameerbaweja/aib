@@ -1,0 +1,24 @@
+.masking{
+	background: #FFF 80% 80% repeat-x;
+	opacity: .7;	
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	text-align: center;
+	font-size: larger;
+}
+
+.page-loading {
+	padding:10px 20px;
+	background:#e3effa;
+	border:1px solid #a5c1da;
+	width:150px;
+	margin:20% auto 0;
+}
+
+.page-loading img{
+	margin:0 !important;
+}

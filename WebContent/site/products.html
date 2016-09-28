@@ -1,0 +1,71 @@
+                <div class="products_block fullwidth_block">
+                  <div class="block_header clearfix">
+                    <h1>My Products</h1>
+
+                    <div class="filter_options">
+                      <span class="filter">Filter by:</span>
+                      <!--<select>
+                       <option value="category">Category</option>
+                       <option value="category">Category 1</option>
+                       <option value="category">Category 2</option>
+                       <option value="category">Category 3</option>
+                      </select>-->
+
+                      <select data-ng-model="productTypeFilter">
+                       <option value="" label="All Product Types" data-ng-selected="selected"></option>
+                       <option data-ng-repeat="type in productTypes" value="{{type.productTypeId}}">{{type.productTypeValue}}</option>
+                      </select>
+
+                      <!--  <select data-ng-change="productTypeChange()" data-ng-model="productTypeFilter" data-ng-options="type.productTypeId as type.productTypeValue for type in productTypes">
+                       <option label="All Product Types" value="" data-ng-selected="selected"></option>
+                      </select>-->
+
+                      <select data-ng-model="makesFilter">
+                       <option value="" label="All Brands" data-ng-selected="selected"></option>
+                       <option data-ng-repeat="make in brands" value="{{make.makeId}}">{{make.makeName}}</option>
+                      </select>
+
+                    </div>
+                  </div>
+
+                  <ul class="about_product">
+                    <li class="active" ng-repeat="product in products | filter:{productType:{productTypeId:productTypeFilter}, make:{makeId:makesFilter}}"> <!-- active class is used for expended block -->
+                      <div class="min-detail clearfix">
+                        <div class="icon_area"><img src="images/icon_pt_{{product.productType.productTypeId}}.png" alt="product icon" class="product_icon" width="31"/></div>
+                        <div class="title_area">
+                          <div class="d_product">
+                            <h2>{{product.productNickName}}</h2>
+                          </div>
+                        </div>
+                        <div class="btn">
+                          <a href="#/editproduct/{{product.productId}}" class="edit"><img src="images/icon_edit.png" alt="edit icon" width="20" /></a>
+                          <!-- <a href="#/deleteproduct/{{product.productId}}" class="delete"><img src="images/icon_delete.png" alt="edit icon" width="16" /></a> -->
+                          <a ng-click="deleteProduct($event, product.productId)" class="delete"><img src="images/icon_delete.png" alt="edit icon" width="16" /></a>
+                        </div>
+                      </div>
+                      <div class="detail_product clearfix">
+                        <div class="p_detail">
+                          <div class="detail_p">
+                            <span class="p_product">Make: <strong>{{product.make.makeName}}</strong></span>
+                            <span class="p_model">Model: <strong>{{product.productModel}}</strong></span>
+                            <span class="purchsed date">Purchased on: <time>{{product.productPurchaseDate | date:'dd-MMM-yyyy'}}<time></span>
+                          </div>
+                          <img src="images/airconditioner.png" alt="Air Conditioner" class="split_ac" width="216" height="77" />
+                        </div>
+
+                        <span class="tab_detail_btn detail_btn">
+                          <a href="#" class="view_det">View Details</a>
+                          <a href="#" class="view_product">View All Requests</a>
+                        </span>
+
+                        <div class="req_det">
+                          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                          <span class="detail_btn">
+                            <a href="#/productdetails/{{product.productId}}" class="view_det">View Details</a>
+                            <a href="#" class="view_product">View All Requests</a>
+                          </span>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div> <!-- end product block -->

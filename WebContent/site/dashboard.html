@@ -1,0 +1,97 @@
+                <div class="requests_block">
+                  <div class="block_header">
+                    <h1>Recent Requests</h1>
+                    <a href="#/requests" class="view_all">View All</a>
+                  </div>
+
+                  <ul class="about_product">
+                    <li class="active" ng-repeat="request in requests">
+                      <div class="min-detail clearfix">
+	                      <div class="icon_area"><img src="images/icon_pt_{{request.product.productType.productTypeId}}.png" alt="laptop icon" class="product_icon" width="32"/></div>
+	                      <div class="title_area">
+	                        <div class="d_product">
+	                          <h2>{{request.requestTitle}}</h2>
+	                          <span class="product_model">{{request.product.productNickName}}</span> <span class="special_ch">&#073;</span> <time datetime="2001-05-15T19:00">{{request.requestCreatedAt | date:'dd-MMM-yyyy'}}</time>
+	                        </div>
+	                      </div>
+	                      <!-- <div class="btn">
+	                        <a href="#" class="edit"><img src="images/icon_edit.png" alt="edit icon" width="20" /></a>
+	                        <a href="#" class="delete"><img src="images/icon_delete.png" alt="edit icon" width="16" /></a>
+	                      </div> -->
+                    	</div>
+
+	                    <div class="detail_product clearfix">
+	                      <ul class="req_detail">
+	                        <li>Request ID: <span class="req_id">{{request.requestId}}</span></li>
+	                        <li>Make: <span class="req_pro">{{request.product.make.makeName}}</span></li>
+	                        <li>Model: <span class="req_model">{{request.product.productModel}}</span></li>
+	                        <li>Status: <span class="req_status">{{request.requestStatus.requestStatusValue}}</span></li>
+	                      </ul>
+	
+	                      {{request.requestDescription}}
+	
+	                      <span class="tab_detail_btn detail_btn">
+	                        <a href="#" class="view_det">View Details</a>
+	                        <a href="#" class="view_product">View Product Details</a>
+	                      </span>
+	
+	                      <div class="req_det">
+	                        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+	                        <span class="detail_btn">
+	                          <a href="#" class="view_det">View Details</a>
+	                          <a href="#" class="view_product">View Product Details</a>
+	                        </span>
+	                      </div>
+	                    </div>
+                    </li>
+                  </ul>
+                </div> <!-- end request block -->
+                <div class="products_block">
+                  <div class="block_header">
+                    <h1>Latest Products</h1>
+                    <a href="#/products" class="view_all">View All</a>
+                  </div>
+
+                  <ul class="about_product">
+                    <li  class="active" ng-repeat="product in products">
+                      <div class="min-detail clearfix">
+                        <div class="icon_area"><img src="images/icon_pt_{{product.productType.productTypeId}}.png" alt="laptop icon" class="product_icon" width="32"/></div>
+                        <div class="title_area">
+                          <div class="d_product">
+                            <h2>{{product.productNickName}}</h2>
+                          </div>
+                        </div>
+                        <!-- <div class="btn">
+                          <a href="#" class="edit"><img src="images/icon_edit.png" alt="edit icon" width="20" /></a>
+                          <a href="#" class="delete"><img src="images/icon_delete.png" alt="edit icon" width="16" /></a>
+                        </div> -->
+                      </div>
+                      <div class="detail_product clearfix">
+                        <div class="p_detail">
+                          <div class="detail_p">
+                            <span class="p_product">Make: <strong>{{product.make.makeName}}</strong></span>
+                            <span class="p_model">Model: <strong>{{product.productModel}}</strong></span>
+                            <span class="purchsed date">Purchased on: <time datetime="2001-05-15T19:00">{{product.productPurchaseDate}}</time></span>
+                          </div>
+                          <img src="images/prd_img_default.png" alt="Laptop" width="118" height="85"/>
+                        </div>
+
+                        <span class="tab_detail_btn detail_btn">
+                          <a href="#" class="view_det">View Details</a>
+                          <a href="#" class="view_product">View All Requests</a>
+                        </span>
+
+                        <div class="req_det">
+                          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                          <span class="detail_btn">
+                            <a href="#/productdetails/{{product.productId}}" class="view_det">View Details</a>
+                            <a href="#" class="view_product">View All Requests</a>
+                          </span>
+                        </div>
+                      </div>
+                    </li>
+                    
+
+                  </ul>
+                </div> <!-- end product block -->
+                

@@ -1,0 +1,121 @@
+        <div class="add_product_popup products_block fullwidth_block">
+         <div class="block_header clearfix">
+           <h1>Add New Product</h1>
+         </div>
+         <md-content layout-padding>
+          <form data-ng-submit="submitProduct()" data-ng-controller="submitProductController" name="productForm" enctype="multipart/form-data">
+            <ul>
+              <li>
+              	<md-input-container class="md-block">
+	                <label for="pro_type">Product Type</label>
+	                <md-select required data-ng-change="productTypeChange()" data-ng-model="product.productTypeId">
+	                	<md-option ng-repeat="type in productTypes" value="{{type.productTypeId}}">
+	                		{{type.productTypeValue}}
+	                	</md-option>
+	                </md-select>
+	                <!-- <select class="text-field" data-ng-change="productTypeChange()" data-ng-model="product.productTypeId" data-ng-options="type.productTypeId as type.productTypeValue for type in productTypes" placeholder="Select product type">
+	                 <option label="Product Type" value="" data-ng-selected="selected">Product Type</option>
+	                </select> -->
+	                <div ng-messages="productForm.productTypeId.$error">
+						<div ng-message="required">This is required.</div>
+					</div>
+				</md-input-container>
+              </li>
+              <li>
+              	<md-input-container class="md-block">
+	                <label for="pro_make">Product Make</label>
+	                <md-select required data-ng-model="product.makeId">
+	                	<md-option ng-repeat="make in brands" value="{{make.makeId}}">
+	                		{{make.makeName}}
+	                	</md-option>
+	                </select>
+	                <!-- <select class="text-field" data-ng-model="product.makeId" data-ng-options="make.makeId as make.makeName for make in brands">
+						<option label="Brand" value="" data-ng-selected="selected">Brand</option>
+	                </select> -->
+	                <div ng-messages="productForm.makeId.$error">
+						<div ng-message="required">This is required.</div>
+					</div>
+	            </md-input-container>
+              </li>
+              <li>
+              	<md-input-container class="md-block">
+	                <label for="pro_name">Product Nick Name</label>
+	                <input type="hidden" data-ng-model="product.productId" />
+	                <input required type="text" data-ng-model="product.productNickName" />
+	                <div ng-messages="productForm.productNickName.$error">
+						<div ng-message="required">This is required.</div>
+					</div>
+	            </md-input-container>
+              </li>
+              <li>
+              	<md-input-container class="md-block">
+	                <label for="pro_model">Product Model</label>
+	                <input required type="text" data-ng-model="product.productModel"/>
+	                <div ng-messages="productForm.productModel.$error">
+						<div ng-message="required">This is required.</div>
+					</div>
+	            </md-input-container>
+              </li>
+              <li class="purchased_date">
+              	<md-input-container class="md-block">
+	                <label for="pur_on">Purchased On</label>
+	                <input required type="text" class="datepicker" readonly="readonly" data-ng-model="product.productPurchaseDate" datepicker />
+	                <!--  <input id="purDateID" name="purDate" data-ng-model="product.productPurchaseDate" type="date" class="text-field datepicker" aria-describedby="sizing-addon3"/> -->
+	                <div ng-messages="productForm.productPurchaseDate.$error">
+						<div ng-message="required">This is required.</div>
+					</div>
+	            </md-input-container>
+              </li>
+              <li class="warranty">
+              	<md-input-container class="md-block">
+	                <label for="warranty_period">Warranty Period (Months)</label>
+	                <input type="number" data-ng-model="product.productWarrantyPeriod"/>
+	                <!-- <span>&#040;months&#041;</span> -->
+	            </md-input-container>
+              </li>
+            </ul>
+            <ul>
+              <li>
+              	<md-input-container class="md-block">
+    	            <label for="bill_no">Bill Number:</label>
+	                <input type="text" data-ng-model="product.productBillNumber"/>
+	            </md-input-container>
+              </li>
+              <li class="text_area">
+              	<md-input-container class="md-block">
+	                <label for="pro_spec">Product Specifications:</label>
+	                <textarea data-ng-model="product.productSpecifications"></textarea>
+	            </md-input-container>
+              </li>
+              <li class="text_area">
+              	<md-input-container class="md-block">
+	                <label for="remarks">Remarks:</label>
+	                <textarea data-ng-model="product.productRemarks"></textarea>
+	            </md-input-container>
+              </li>
+            </ul>
+            <ul style="width:100%">
+              <li style="float:right;">
+              	<md-button type="submit" class="md-raised md-primary">Submit</md-button>
+              	<md-button type="reset" class="md-raised">Cancel</md-button>
+              </li>
+            </ul>
+          </form>
+          </md-content>
+        </div>
+<script>
+/*$( ".datepicker" ).datepicker({
+    showOn: "both",
+    buttonImage: "images/icon_calender.png",
+    buttonImageOnly: true,
+    buttonText: "Select date",
+    dateFormat: "d-MM-yy",
+    onSelect: function(dateText, inst)
+    {
+        var date = $(this).datepicker('getDate');
+        console.log("date:" + date.getFullYear()+date.getMonth()+date.getDate());
+    }      
+  });*/
+  
+  
+</script>
